@@ -26,7 +26,7 @@ var i = 10 // mutable variable
 val i:Int = 10 // type:Int
 var i:Double = 10 // type:Double, output 10.0
 ```
-- 函数声明 (注意函数参数列表必须声明类型，返回类型则可选，return可隐藏)
+- 函数声明 ( 注意函数参数列表必须声明类型，返回类型则可选，return 可隐藏 )
 ```python3
 # python3
 def example_method(a, b):
@@ -39,5 +39,5 @@ def example_method(a:Int, b:Int):Int = {
     a+b
 }
 ```
-
+- 数组声明和使用
 
