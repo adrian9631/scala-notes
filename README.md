@@ -88,4 +88,26 @@ def tailRecursiveShuffle(s: String, acc: String = ""): String = {
 
 - 函数式编程
 ```scala
+sealed trait Regex
+
+// Rule 
+case class Toregex(s: String) extends Regex
+case class Concat(a: Regex, b: Regex) extends Regex
+case class Or(a: Regex, b: Regex) extends Regex
+case class And(a: Regex, b: Regex) extends Regex
+
+// Finalfunction
+val finalfunction = {
+    Concat( Or(Toregex("Hello"),Toregex("World")), And(Toregex("Function"),Toregex("Programmming")) ) 
+}
+
+// Definition
+def munge(r: Regex): String = r match {
+    case Toregex(st) => "|start|" + st
+    case Concat(r1, r2) => munge(r1) + "|concat|" + munge(r2)
+    case Or(r1, r2) => munge(r1) + "|Or|" + munge(r2)
+    case And(r1, r2) => munge(r1) + "|And|" + munge(r2)
+}
+
+munge(finalfunction)
 ```
