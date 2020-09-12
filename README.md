@@ -1,6 +1,9 @@
 # scala-notes
 
-语法区别点 ( 和 python 稍微对比 )  
+### 宝藏资料 ( 学习timeline: 2020.9.12 -- 神秘时间 )  
+http://twitter.github.io/scala_school/zh_cn/
+
+### 语法区别点 ( 和 python 稍微对比 )  
 - 循环 （ 枚举用 to 或者 until，<- 代表 in，循环 mainbody 必须加 {} ） 
 ```python3
 # python3
@@ -86,7 +89,8 @@ def tailRecursiveShuffle(s: String, acc: String = ""): String = {
 }
 ```
 
-- 函数式编程
+- 函数式编程 
+( 这里三个概念，一注意 case class；二注意 trait 和 extends；三注意 match case 写法类似于 C 中的 switch )
 ```scala
 sealed trait Regex
 
@@ -101,7 +105,7 @@ val finalfunction = {
     Concat( Or(Toregex("Hello"),Toregex("World")), And(Toregex("Function"),Toregex("Programmming")) ) 
 }
 
-// Definition
+// Definition 
 def munge(r: Regex): String = r match {
     case Toregex(st) => "|start|" + st
     case Concat(r1, r2) => munge(r1) + "|concat|" + munge(r2)
