@@ -90,7 +90,7 @@ def tailRecursiveShuffle(s: String, acc: String = ""): String = {
 ```
 
 - 函数式编程 
-( 这里三个概念，一注意 case class；二注意 trait 和 extends；三注意 match case 写法类似于 C 中的 switch )  
+( 这里三个概念，一注意 case class 样本类特别用于模式匹配；二注意 trait 和 extends；三注意 match case 模式匹配写法类似于 C 中的 switch )  
 ```scala
 sealed trait Regex
 
