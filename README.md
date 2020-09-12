@@ -1,7 +1,7 @@
 # scala-notes
 
 ### 宝藏资料 ( 学习timeline: 2020.9.12 -- 神秘时间 )  
-http://twitter.github.io/scala_school/zh_cn/
+- scala入门 http://twitter.github.io/scala_school/zh_cn/
 
 ### 语法区别点 ( 和 python 稍微对比 )  
 - 循环 （ 枚举用 to 或者 until，<- 代表 in，循环 mainbody 必须加 {} ） 
@@ -90,7 +90,7 @@ def tailRecursiveShuffle(s: String, acc: String = ""): String = {
 ```
 
 - 函数式编程 
-( 这里三个概念，一注意 case class；二注意 trait 和 extends；三注意 match case 写法类似于 C 中的 switch )
+( 这里三个概念，一注意 case class；二注意 trait 和 extends；三注意 match case 写法类似于 C 中的 switch )  
 ```scala
 sealed trait Regex
 
@@ -114,4 +114,22 @@ def munge(r: Regex): String = r match {
 }
 
 munge(finalfunction)
+```
+- tips: To trait, or not to trait?  
+ https://www.artima.com/pins1ed/traits.html#12.7    
+ https://stackoverflow.com/questions/1991042/what-is-the-advantage-of-using-abstract-classes-instead-of-traits  
+ 
+- 柯西函数化 (注意 “_” 通配符, 可先应用部分参数，剩下用通配符进行参数获取)
+```scala
+def multiply(m: Int)(n: Int): Int = m * n
+//output: multiply: (m: Int)(n: Int)Int
+
+multiply(2)(3)
+//output: res0: Int = 6
+
+val timesTwo = multiply(2) _
+//output: timesTwo: (Int) => Int = <function1>
+timesTwo(3)
+//output: res1: Int = 6
+
 ```
