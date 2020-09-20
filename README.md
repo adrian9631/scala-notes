@@ -133,3 +133,49 @@ timesTwo(3)
 //output: res1: Int = 6
 
 ```
+
+- recursion & match case (必须考虑所有匹配的情况，可在复杂参数前加 xxx@ 将参数重新命名为 xxx)
+
+定义
+```scala
+sealed trait NList
+case object Nil extends NList
+case class Cons(n: Int, l: NList) extends NList 
+```
+
+返回第N个元素
+```scala
+def getNthElement(lst: NList, n: Int): Int = {
+    lst match {
+        case Nil => throw new IllegalArgumentException("Nil")
+        case _ if n < 0 => throw new IllegalArgumentException("n < 0")
+        case Cons(n1, Nil) if n != 0 => throw new IllegalArgumentException("n >= length of list")
+        case Cons(n1, _) if n == 0 => n1
+        case Cons(n1, next@Cons(n2, _)) => getNthElement(next, n-1)
+    }
+}
+```
+
+判断是否为Fibonacci数列
+```scala
+def isFibonacci(lst: NList): Boolean = { 
+    lst match {
+        case Cons(i, Cons(j, Nil)) => true
+        case Cons(i, next@Cons(j, Cons(k, _))) if i+j == k => isFibonacci(next)
+        case Cons(i, Cons(j, Cons(k, _))) if i+j != k => false
+    }
+}
+```
+
+用函数f对数列进行筛选，符合保留，不符合剔除
+```scala
+def filterNumList(lst: NList, f:Int => Boolean): NumList = { 
+    lst match {
+        case Nil => Nil
+        case Cons(n1, Nil) if f(n1) => Cons(n1, Nil)
+        case Cons(n1, Nil) if !f(n1) => Nil
+        case Cons(n1, next@Cons(n2, _)) if f(n1) => Cons(n1, filterNumList(next, f))
+        case Cons(n1, next@Cons(n2, _)) if !f(n1) => filterNumList(next, f)
+    }
+}
+```
