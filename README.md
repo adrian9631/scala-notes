@@ -179,3 +179,14 @@ def filterNumList(lst: NList, f:Int => Boolean): NumList = {
     }
 }
 ```
+- 匿名函数 (注意 map 参数为匿名函数，foldLeft 第一个参数是初始值， 第二个参数是匿名函数)
+```scala
+def dotProduct(lstA: List[Double], lstB: List[Double]): Double = {
+    lstA.zip(lstB).map( (x) => {x._1 * x._2} ).foldLeft(0.0)( (acc, elt) => acc + elt)
+}
+```
+```scala
+def valueLargerThanIndex(lst: List[Int]): List[Int] = {
+    lst.zip((0 to (lst.length-1)).toList).filter( (x) => {x._1 >= x._2} ).map( (x) => {x._1} )
+}
+```
