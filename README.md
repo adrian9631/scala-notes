@@ -179,7 +179,8 @@ def filterNumList(lst: NList, f:Int => Boolean): NumList = {
     }
 }
 ```
-- 匿名函数 (注意 map 参数为匿名函数，foldLeft 第一个参数是初始值， 第二个参数是匿名函数)
+- 匿名函数 
+(注意 map 参数为匿名函数，foldLeft 第一个参数是初始值， 第二个参数是匿名函数， 注意 tuple 类型读取元素方式)
 ```scala
 def dotProduct(lstA: List[Double], lstB: List[Double]): Double = {
     lstA.zip(lstB).map( (x) => {x._1 * x._2} ).foldLeft(0.0)( (acc, elt) => acc + elt)
@@ -189,4 +190,5 @@ def dotProduct(lstA: List[Double], lstB: List[Double]): Double = {
 def valueLargerThanIndex(lst: List[Int]): List[Int] = {
     lst.zip((0 to (lst.length-1)).toList).filter( (x) => {x._1 >= x._2} ).map( (x) => {x._1} )
 }
+//foldLeft(初始值)(函数)，初始值可以是各类数据结构（不只是数值）但要保证与函数输出类型相同，运行顺序从左遍历到右，foldRight相反
 ```
