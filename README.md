@@ -2,6 +2,7 @@
 
 ### 宝藏资料 ( 学习timeline: 2020.9.12 -- 神秘时间 )  
 - scala入门 http://twitter.github.io/scala_school/zh_cn/
+- regex https://www.scala-lang.org/api/2.9.2/scala/util/matching/Regex.html
 
 ### 语法区别点 ( 和 python 稍微对比 )  
 - 循环 （ 枚举用 to 或者 until，<- 代表 in，循环 mainbody 必须加 {} ） 
